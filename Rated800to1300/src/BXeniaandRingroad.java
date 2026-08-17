@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class BXeniaandRingroad {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[] tasks = new int[m];
+        for (int i = 0; i < m; i++) {
+            tasks[i] = sc.nextInt();
+        }
+        long time = 0;
+        int current = 1;
+        for (int i = 0; i < m; i++) {
+            int target = tasks[i];
+            if (target >= current) {
+                time += target - current;
+            } else {
+                time += (n - current) + target;
+            }
+            current = target;
+        }
+        System.out.println(time);
+        sc.close();
+    }
+}
